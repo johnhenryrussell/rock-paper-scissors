@@ -20,9 +20,30 @@ function playRound(playerSelection, computerSelection) {
     return "Player Wins!"
   } else {
     return "Computer Wins."
-  }
+  };
 
-}
+};
+
+
+const rockBtn = document.querySelector('.rockBtn');
+const paperBtn = document.querySelector('.paperBtn');
+const scissorBtn = document.querySelector('.scissorBtn');
+
+rockBtn.addEventListener('click', () => {
+  console.log("Rock");
+});
+
+paperBtn.addEventListener('click', () => {
+  console.log("Paper")
+});
+
+scissorBtn.addEventListener('click', () => {
+  console.log("Scissors")
+});
+
+
+
+
 // This function keeps score of the game.
 function scoreKeeper(playerSelection, computerSelection) {
   if (playRound(playerSelection, computerSelection) == "Player Wins!") {
@@ -49,17 +70,17 @@ function scoreReset() {
   computerScore = 0;
 }
 // This function uses a for loop to play 5 rounds of rock,paper, scissors.
-function game() {
-  for (let i=0; i < 5; i++) {
-    let playerSelection = prompt("Please Pick").toLowerCase();
-    let computerSelection = computerPlay();
-    console.log(playRound(playerSelection, computerSelection));
-    scoreKeeper(playerSelection, computerSelection);
-    console.log(`Score: ${playerScore}-${computerScore}`);
+// function game() {
+//   for (let i=0; i < 5; i++) {
+//     let playerSelection = prompt("Please Pick").toLowerCase();
+//     let computerSelection = computerPlay();
+//     console.log(playRound(playerSelection, computerSelection));
+//     scoreKeeper(playerSelection, computerSelection);
+//     console.log(`Score: ${playerScore}-${computerScore}`);
     
-  }
+//   }
 
-  console.log(checkWinner());
-  scoreReset();
+//   console.log(checkWinner());
+//   scoreReset();
 
-}
+// }
