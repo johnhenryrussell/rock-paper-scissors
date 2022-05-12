@@ -14,6 +14,12 @@ const scoreContainer = document.querySelector('.score');
 const winnerBox = document.querySelector('.winner-box');
 
 
+// This adds an event listener to each button and runs respective function
+rockBtn.addEventListener('click', playGameRock);
+paperBtn.addEventListener('click', playGamePaper);
+scissorBtn.addEventListener('click', playGameScissor);
+
+
 // This function picks a random item in the array "gamePlays"
 function computerPlay() {
   return gamePlays[Math.floor(Math.random()*gamePlays.length)];
@@ -33,12 +39,6 @@ function playRound(playerSelection, computerSelection) {
     return "Computer Wins."
   };
 };
-
-
-// This adds an event listener to each button and runs respective function
-rockBtn.addEventListener('click', playGameRock);
-paperBtn.addEventListener('click', playGamePaper);
-scissorBtn.addEventListener('click', playGameScissor);
 
 // Function for when user chooses rock
 function playGameRock() {
