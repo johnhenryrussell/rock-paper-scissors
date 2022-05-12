@@ -28,7 +28,7 @@ function computerPlay() {
 // This function computes the winner in a single game of rock, paper, scissors
 function playRound(playerSelection, computerSelection) {
   if(playerSelection === computerSelection) {
-    return "It's a tie"
+    return "It's a Tie"
   } else if(playerSelection === "rock" && computerSelection === "Scissors") {
     return "Player Wins!"
   } else if(playerSelection === "paper" && computerSelection === "Rock") {
