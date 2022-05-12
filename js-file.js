@@ -7,7 +7,7 @@ const rockBtn = document.querySelector('.rockBtn');
 const paperBtn = document.querySelector('.paperBtn');
 const scissorBtn = document.querySelector('.scissorBtn');
 
-const container = document.querySelector('.container');
+const container = document.querySelector('.text-container');
 const playerSelectionContainer = document.querySelector('.player-selection');
 const computerSelectionContainer = document.querySelector('.computer-selection');
 const scoreContainer = document.querySelector('.score');
@@ -43,19 +43,19 @@ function playRound(playerSelection, computerSelection) {
 // Function for when user chooses rock
 function playGameRock() {
   let computerSelection = computerPlay();
-  playerSelectionContainer.textContent = "Player Selection: Rock";
-  computerSelectionContainer.textContent = `Computer Selection: ${computerSelection}`;
   scoreKeeper("rock", computerSelection);
   scoreContainer.textContent = `Score: ${playerScore}-${computerScore}`;
+  let singleRoundWinner = playRound("rock", computerSelection);
+  playerSelectionContainer.textContent = singleRoundWinner;
   checkWinner();
 }
 // Function for when user chooses paper
 function playGamePaper() {
   let computerSelection = computerPlay();
-  playerSelectionContainer.textContent = "Player Selection: Paper";
-  computerSelectionContainer.textContent = `Computer Selection: ${computerSelection}`;
   scoreKeeper("paper", computerSelection);
   scoreContainer.textContent = `Score: ${playerScore}-${computerScore}`;
+  let singleRoundWinner = playRound("paper", computerSelection);
+  playerSelectionContainer.textContent = singleRoundWinner;
   checkWinner();
 
 }
@@ -63,10 +63,10 @@ function playGamePaper() {
 // Function for when user chooses scissors
 function playGameScissor() {
   let computerSelection = computerPlay();
-  playerSelectionContainer.textContent = "Player Selection: Scissors";
-  computerSelectionContainer.textContent = `Computer Selection: ${computerSelection}`;
   scoreKeeper("scissors", computerSelection);
   scoreContainer.textContent = `Score: ${playerScore}-${computerScore}`;
+  let singleRoundWinner = playRound("scissors", computerSelection);
+  playerSelectionContainer.textContent = singleRoundWinner;
   checkWinner();
 }
 
