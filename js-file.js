@@ -2,6 +2,17 @@ const gamePlays = ["Rock", "Paper", "Scissors"];
 let playerScore = 0;
 let computerScore = 0;
 
+let computerSelection = computerPlay();
+const rockBtn = document.querySelector('.rockBtn');
+const paperBtn = document.querySelector('.paperBtn');
+const scissorBtn = document.querySelector('.scissorBtn');
+
+const container = document.querySelector('.container');
+const playerSelectionContainer = document.querySelector('.player-selection');
+const computerSelectionContainer = document.querySelector('.computer-selection');
+const scoreContainer = document.querySelector('.score');
+const winnerBox = document.querySelector('.winner-box');
+
 
 // This function picks a random item in the array "gamePlays"
 function computerPlay() {
@@ -21,59 +32,43 @@ function playRound(playerSelection, computerSelection) {
   } else {
     return "Computer Wins."
   };
-
 };
 
-let computerSelection = computerPlay();
-const rockBtn = document.querySelector('.rockBtn');
-const paperBtn = document.querySelector('.paperBtn');
-const scissorBtn = document.querySelector('.scissorBtn');
 
-const container = document.querySelector('.container');
-const playerSelectionContainer = document.querySelector('.player-selection');
-const computerSelectionContainer = document.querySelector('.computer-selection');
-const scoreContainer = document.querySelector('.score');
-const winnerBox = document.querySelector('.winner-box');
-
+// This adds an event listener to each button and runs respective function
 rockBtn.addEventListener('click', playGameRock);
 paperBtn.addEventListener('click', playGamePaper);
 scissorBtn.addEventListener('click', playGameScissor);
 
+// Function for when user chooses rock
 function playGameRock() {
   let computerSelection = computerPlay();
-  console.log(playRound("rock", computerSelection));
   playerSelectionContainer.textContent = "Player Selection: Rock";
   computerSelectionContainer.textContent = `Computer Selection: ${computerSelection}`;
   scoreKeeper("rock", computerSelection);
   scoreContainer.textContent = `Score: ${playerScore}-${computerScore}`;
-
   checkWinner();
 }
-
+// Function for when user chooses paper
 function playGamePaper() {
   let computerSelection = computerPlay();
-  console.log(playRound("paper", computerSelection));
   playerSelectionContainer.textContent = "Player Selection: Paper";
   computerSelectionContainer.textContent = `Computer Selection: ${computerSelection}`;
   scoreKeeper("paper", computerSelection);
   scoreContainer.textContent = `Score: ${playerScore}-${computerScore}`;
-
   checkWinner();
 
 }
 
+// Function for when user chooses scissors
 function playGameScissor() {
   let computerSelection = computerPlay();
-  console.log(playRound("scissors", computerSelection));
   playerSelectionContainer.textContent = "Player Selection: Scissors";
   computerSelectionContainer.textContent = `Computer Selection: ${computerSelection}`;
   scoreKeeper("scissors", computerSelection);
   scoreContainer.textContent = `Score: ${playerScore}-${computerScore}`;
-
   checkWinner();
 }
-
-
 
 // This function keeps score of the game.
 function scoreKeeper(playerSelection, computerSelection) {
@@ -85,7 +80,7 @@ function scoreKeeper(playerSelection, computerSelection) {
     return [playerScore, computerScore]
   }
 }
-// This function checks for the final winner of the game
+// This function checks for the final winner of the game and reloads the page when there is a winner.
 function checkWinner() {
   if (playerScore === 5) {
     alert(`Player Win. Score: ${playerScore}-${computerScore}`);
@@ -103,18 +98,3 @@ function scoreReset() {
   playerScore = 0;
   computerScore = 0;
 }
-// This function uses a for loop to play 5 rounds of rock,paper, scissors.
-// function game() {
-//   for (let i=0; i < 5; i++) {
-//     let playerSelection = prompt("Please Pick").toLowerCase();
-//     let computerSelection = computerPlay();
-//     console.log(playRound(playerSelection, computerSelection));
-//     scoreKeeper(playerSelection, computerSelection);
-//     console.log(`Score: ${playerScore}-${computerScore}`);
-    
-//   }
-
-//   console.log(checkWinner());
-//   scoreReset();
-
-// }
