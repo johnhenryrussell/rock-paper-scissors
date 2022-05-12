@@ -1,4 +1,4 @@
-const gamePlays = ["rock", "paper", "scissors"];
+const gamePlays = ["Rock", "Paper", "Scissors"];
 let playerScore = 0;
 let computerScore = 0;
 
@@ -12,11 +12,11 @@ function computerPlay() {
 function playRound(playerSelection, computerSelection) {
   if(playerSelection === computerSelection) {
     return "It's a tie"
-  } else if(playerSelection === "rock" && computerSelection === "scissors") {
+  } else if(playerSelection === "rock" && computerSelection === "Scissors") {
     return "Player Wins!"
-  } else if(playerSelection === "paper" && computerSelection === "rock") {
+  } else if(playerSelection === "paper" && computerSelection === "Rock") {
     return "Player Wins!"
-  } else if(playerSelection === "scissors" && computerSelection === "paper") {
+  } else if(playerSelection === "scissors" && computerSelection === "Paper") {
     return "Player Wins!"
   } else {
     return "Computer Wins."
@@ -24,23 +24,54 @@ function playRound(playerSelection, computerSelection) {
 
 };
 
-
+let computerSelection = computerPlay();
 const rockBtn = document.querySelector('.rockBtn');
 const paperBtn = document.querySelector('.paperBtn');
 const scissorBtn = document.querySelector('.scissorBtn');
 
-rockBtn.addEventListener('click', () => {
-  console.log("Rock");
-});
+const container = document.querySelector('.container');
+const playerSelectionContainer = document.querySelector('.player-selection');
+const computerSelectionContainer = document.querySelector('.computer-selection');
+const scoreContainer = document.querySelector('.score');
+const winnerBox = document.querySelector('.winner-box');
 
-paperBtn.addEventListener('click', () => {
-  console.log("Paper")
-});
+rockBtn.addEventListener('click', playGameRock);
+paperBtn.addEventListener('click', playGamePaper);
+scissorBtn.addEventListener('click', playGameScissor);
 
-scissorBtn.addEventListener('click', () => {
-  console.log("Scissors")
-});
+function playGameRock() {
+  let computerSelection = computerPlay();
+  console.log(playRound("rock", computerSelection));
+  playerSelectionContainer.textContent = "Player Selection: Rock";
+  computerSelectionContainer.textContent = `Computer Selection: ${computerSelection}`;
+  scoreKeeper("rock", computerSelection);
+  scoreContainer.textContent = `Score: ${playerScore}-${computerScore}`;
 
+  checkWinner();
+}
+
+function playGamePaper() {
+  let computerSelection = computerPlay();
+  console.log(playRound("paper", computerSelection));
+  playerSelectionContainer.textContent = "Player Selection: Paper";
+  computerSelectionContainer.textContent = `Computer Selection: ${computerSelection}`;
+  scoreKeeper("paper", computerSelection);
+  scoreContainer.textContent = `Score: ${playerScore}-${computerScore}`;
+
+  checkWinner();
+
+}
+
+function playGameScissor() {
+  let computerSelection = computerPlay();
+  console.log(playRound("scissors", computerSelection));
+  playerSelectionContainer.textContent = "Player Selection: Scissors";
+  computerSelectionContainer.textContent = `Computer Selection: ${computerSelection}`;
+  scoreKeeper("scissors", computerSelection);
+  scoreContainer.textContent = `Score: ${playerScore}-${computerScore}`;
+
+  checkWinner();
+}
 
 
 
@@ -56,14 +87,17 @@ function scoreKeeper(playerSelection, computerSelection) {
 }
 // This function checks for the final winner of the game
 function checkWinner() {
-  if (playerScore > computerScore) {
-    return "Player wins the game!"
-  } else if (playerScore < computerScore) {
-    return "Computer wins the game."
-  } else {
-    return "Player and Computer tie. "
+  if (playerScore === 5) {
+    alert(`Player Win. Score: ${playerScore}-${computerScore}`);
+    scoreReset();
+    window.location.reload();
+  } else if (computerScore === 5) {
+    alert (`Computer Win. Score: ${playerScore}-${computerScore}`)
+    scoreReset();
+    window.location.reload();
   }
-}
+};
+
 // This function resets the score after the game is done.
 function scoreReset() {
   playerScore = 0;
